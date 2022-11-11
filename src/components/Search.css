@@ -1,0 +1,85 @@
+img {
+  background-color: red;
+  object-fit: cover;
+  /* background-size: cover;
+    background-position: center center; */
+  /* min-width: 100px */
+  object-fit: contain;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+.gallery-image:hover {
+  filter: grayscale();
+}
+.navbar {
+  min-width: 100%;
+}
+.gallery-image {
+  transition: filter 0.1s linear;
+
+  /* min-height: 100px; */
+  /* width: 100px; */
+}
+.App {
+  min-height: 100vh;
+  background-color: #282c34;
+}
+body {
+  /* overflow-x: hidden; */
+  background-color: #282c34;
+}
+.image-wrapper {
+  vertical-align: top;
+  display: inline-block;
+  padding: 5px;
+  margin: 5px 0px;
+  background-color: white;
+  width: 100%;
+  overflow: hidden;
+}
+.gallery {
+  margin: 0px 10px;
+  line-height: 10px;
+  -webkit-column-count: 4; /* split it into 5 columns */
+  -webkit-column-gap: 5px; /* give it a 5px gap between columns */
+
+  -moz-column-count: 4;
+  -moz-column-gap: 5px;
+
+  column-count: 4;
+  column-gap: 10px;
+  /* display: flex; */
+}
+@media only screen and (max-width: 1000px) {
+  .gallery {
+    -webkit-column-count: 3; /* split it into 5 columns */
+
+    -moz-column-count: 3;
+
+    column-count: 3;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .gallery {
+    -webkit-column-count: 2; /* split it into 5 columns */
+
+    -moz-column-count: 2;
+
+    column-count: 2;
+  }
+}
+.hidden {
+  transform: translateY(-100px);
+}
+.my-nav {
+  transition: transform 0.3s ease;
+  padding: 10px 10px !important;
+}
+.content-title {
+  /* position: relative; */
+  /* top: 0; */
+  margin-bottom: 5px;
+}
+.right-side {
+}
