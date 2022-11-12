@@ -7,12 +7,14 @@ import Popup from "./components/Popup";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import PopupNGROK from "./components/PopupNGROK";
 
 function App() {
   const [imgs, setImgs] = useState([]);
   const [offset, setOffset] = useState(0);
   const [showImg, setshowImg] = useState("");
-  
+  const [NgrokLink, setNgrokLink] = useState("")
+  const [ngrokShow, setngrokShow] =  useState(true)
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset);
     window.removeEventListener("scroll", onScroll);
@@ -27,10 +29,10 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <Search offset={offset} setImgs={setImgs} imgs={imgs} />
+      <PopupNGROK setngrokShow={setngrokShow} ngrokShow={ngrokShow} NgrokLink={NgrokLink} setNgrokLink={setNgrokLink}/>
+      <Search setngrokShow={setngrokShow} NgrokLink={NgrokLink} offset={offset} setImgs={setImgs} imgs={imgs} />
       <Gallery setshowImg={setshowImg} imgs={imgs} />
       <Popup setshowImg={setshowImg} showImg={showImg} />
-      <Button className="md-3 right-side" variant="primary"><FontAwesomeIcon icon={faSearch} /></Button>
     </div>
   );
 }

@@ -3,21 +3,30 @@ import "./Search.css";
 import { Form, Button, InputGroup, Navbar, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-const Search = ({ offset, imgs, setImgs }) => {
+const Search = ({ setngrokShow, NgrokLink, offset, imgs, setImgs }) => {
   const [Txt, setTxt] = useState("Balloon!");
   const [Searching, setSearching] = useState(true);
   const callAPI = (txt) => {
     setSearching(true);
-    fetch("http://127.0.0.1:5000/encode", {
+    // fetch("${http://d939-34-125-248-214.ngrok.io}/encode", {
+    fetch(`${NgrokLink}/encode`, {
       body: JSON.stringify({ text: txt }),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "just why?",
+      },
       method: "post",
     })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
+
+        setngrokShow(false);
         setImgs(res.vals);
         setSearching(false);
+      })
+      .catch(() => {
+        setngrokShow(true);
       });
   };
   const APISearch = (e) => {
@@ -26,8 +35,11 @@ const Search = ({ offset, imgs, setImgs }) => {
     return false;
   };
   useEffect(() => {
-    callAPI(Txt);
-  }, []);
+    if (NgrokLink == "") {
+    } else {
+      callAPI(Txt);
+    }
+  }, [NgrokLink]);
   const [PrevOffset, setPrevOffset] = useState(0);
   const [Hidden, setHidden] = useState(false);
   useEffect(() => {
@@ -73,7 +85,12 @@ const Search = ({ offset, imgs, setImgs }) => {
               val={Txt}
             />
             {Searching ? (
-              <Button disabled variant="warning" type="submit" onSubmit={APISearch}>
+              <Button
+                disabled
+                variant="warning"
+                type="submit"
+                onSubmit={APISearch}
+              >
                 <Spinner as="span" animation="border" size="sm" />
               </Button>
             ) : (
