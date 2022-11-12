@@ -3,7 +3,7 @@
 Backed by OpenAI CLIP, Now search your stock images using textual prompts (e.g. deer running in a forest). 
 
 
-#Tools used:
+## Tools used:
 **ML Framework:** PyTorch, TorchScript\
 **Front-end:** React.js, Yarn and React-Bootstrap\
 **Back-end** (Flask, Colab with Ngrok)\
