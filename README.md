@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# CLIP Image-Search on Unsplash and Flickr Photos
 
 Backed by OpenAI CLIP, Now search your stock images using textual prompts (e.g. deer running in a forest). 
 
